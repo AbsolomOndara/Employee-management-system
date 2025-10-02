@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System - Functionality 4</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Employee Management System</h1>
+            <p class="subtitle">Functionality 4 - Enhanced Employee Management</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="view">View All Employees</button>
+            <button class="tab-btn" data-tab="search">Search by SSN</button>
+            <button class="tab-btn" data-tab="edit">Edit Employee</button>
+            <button class="tab-btn" data-tab="add">Add Employee</button>
+        </nav>
+
+        <!-- View All Employees Tab -->
+        <div id="view" class="tab-content active">
+            <div class="card">
+                <h2>All Employees</h2>
+                <div class="employee-count">
+                    <span id="employeeCount">Loading...</span> employees in system
+                </div>
+                <div id="employeesList" class="employees-list">
+                    <!-- Employees will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Search by SSN Tab -->
+        <div id="search" class="tab-content">
+            <div class="card">
+                <h2>Search Employee by SSN</h2>
+                <div class="search-form">
+                    <input type="text" id="searchSSN" placeholder="Enter SSN" class="form-input">
+                    <button onclick="searchEmployee()" class="btn btn-primary">Search</button>
+                </div>
+                <div id="searchResults" class="search-results">
+                    <!-- Search results will appear here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Employee Tab -->
+        <div id="edit" class="tab-content">
+            <div class="card">
+                <h2>Edit Employee Information</h2>
+                <div class="edit-form">
+                    <div class="form-group">
+                        <label>Search by SSN:</label>
+                        <input type="text" id="editSearchSSN" placeholder="Enter SSN to find employee" class="form-input">
+                        <button onclick="findEmployeeToEdit()" class="btn btn-secondary">Find Employee</button>
+                    </div>
+                    
+                    <form id="editEmployeeForm" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name:</label>
+                                <input type="text" id="editName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>SSN:</label>
+                                <input type="text" id="editSSN" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Phone:</label>
+                                <input type="text" id="editPhone" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email:</label>
+                                <input type="email" id="editEmail" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Salary:</label>
+                            <input type="number" id="editSalary" class="form-input" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Employee</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Employee Tab -->
+        <div id="add" class="tab-content">
+            <div class="card">
+                <h2>Add New Employee</h2>
+                <form id="addEmployeeForm" class="employee-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name:</label>
+                            <input type="text" id="addName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label>SSN:</label>
+                            <input type="text" id="addSSN" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone:</label>
+                            <input type="text" id="addPhone" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="addEmail" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Salary:</label>
+                        <input type="number" id="addSalary" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Employee</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
